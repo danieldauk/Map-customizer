@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
       lat: 54.687157,
       lng: 25.279652
     },
-    zoom: 8,
+    zoom: 14,
     markers: [],
     styles: []
   },

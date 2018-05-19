@@ -1,6 +1,5 @@
 <template>
 <div>
-  <button @click="loadMap">Reload</button>
     <div class="map">
 
     </div>
@@ -11,22 +10,23 @@
 <script>
 import GoogleMapsLoader from "google-maps";
 export default {
-  computed: {},
   methods: {
-    loadMap(myStyles, coordinates, markers) {
-      // Google map container 
+    loadMap() {
+      // Google map container
       const mapContainer = document.querySelector(".map");
 
       // Google map options object
       const options = {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-        styles: myStyles
+        center: {
+          lat: this.$store.state.coordinates.lat,
+          lng: this.$store.state.coordinates.lng
+        },
+          zoom: this.$store.state.zoom,
+          styles: this.$store.state.styles
       };
 
       //Setting API key property of Google loader
       GoogleMapsLoader.key = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
-
 
       //creating new instance of Google map
       GoogleMapsLoader.load(google => {
@@ -35,7 +35,6 @@ export default {
         this.$store.dispatch("saveMap", map);
       });
     }
-    
   },
   mounted() {
     this.loadMap();
