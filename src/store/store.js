@@ -12,12 +12,144 @@ export const store = new Vuex.Store({
     },
     zoom: 14,
     markers: [],
-    styles: []
+    styles: [
+      {
+          "featureType": "administrative",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "saturation": "-100"
+              }
+          ]
+      },
+      {
+          "featureType": "administrative.province",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 65
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": "50"
+              },
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "saturation": "-100"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "road.arterial",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "lightness": "30"
+              }
+          ]
+      },
+      {
+          "featureType": "road.local",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "lightness": "40"
+              }
+          ]
+      },
+      {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "saturation": -100
+              },
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+              {
+                  "hue": "#ffff00"
+              },
+              {
+                  "lightness": -25
+              },
+              {
+                  "saturation": -97
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "labels",
+          "stylers": [
+              {
+                  "lightness": -25
+              },
+              {
+                  "saturation": -100
+              }
+          ]
+      }
+  ]
   },
   getters: {},
   mutations: {
     addStyle(state, payload) {
-      state.styles.push(payload);
+      //if it's new style, push to array
+      if (payload.index === state.styles.length) {
+        state.styles.push(payload.style);
+      } else {
+        // else change existing one
+        state.styles[payload.index] = payload.style;
+      }
+      console.log(state.styles);
+      //apply changes
       state.map.setOptions({
         center: {
           lat: state.coordinates.lat,
@@ -38,6 +170,21 @@ export const store = new Vuex.Store({
       } else {
         state.zoom = payload[1];
       }
+
+      //apply changes
+      state.map.setOptions({
+        center: {
+          lat: state.coordinates.lat,
+          lng: state.coordinates.lng
+        },
+        zoom: state.zoom,
+        styles: state.styles
+      });
+    },
+    removeStyle(state,payload){
+      state.styles.splice(payload, 1);
+
+      //apply changes
       state.map.setOptions({
         center: {
           lat: state.coordinates.lat,
@@ -57,6 +204,9 @@ export const store = new Vuex.Store({
     },
     changeMain(context, payload) {
       context.commit("changeMain", payload);
+    },
+    removeStyle(context, payload) {
+      context.commit("removeStyle", payload);
     }
   }
 });

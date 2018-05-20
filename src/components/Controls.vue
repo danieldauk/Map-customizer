@@ -1,15 +1,15 @@
 <template>
     <div class="controls">
-        <app-menu-styles></app-menu-styles>
-        <app-menu-main></app-menu-main>
+        <app-styles></app-styles>
+        <app-main></app-main>
     </div>
 </template>
 
 <script>
-import MenuStyles from "./MenuStyles";
-import MenuMarkers from "./MenuMarkers";
-import MenuPresets from "./MenuPresets";
-import MenuMain from "./MenuMain";
+import Styles from "./menu/Styles/Styles";
+import Markers from "./menu/Markers/Markers";
+import Presets from "./menu/Presets/Presets";
+import Main from "./menu/Main/Main";
 export default {
   computed: {
     activeUnits() {
@@ -17,10 +17,10 @@ export default {
     }
   },
   components: {
-    appMenuStyles: MenuStyles,
-    appMenuMarkers: MenuMarkers,
-    appMenuPresets: MenuPresets,
-    appMenuMain: MenuMain,
+    appStyles: Styles,
+    appMarkers: Markers,
+    appPresets: Presets,
+    appMain: Main,
   }
 };
 </script>

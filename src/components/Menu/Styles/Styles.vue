@@ -1,7 +1,9 @@
 <template>
     <div class="styles">
         <app-style-unit
-        v-for="unit in activeUnits"
+        :key="Math.random()"
+        :index="index"
+        v-for="(unit, index) in activeUnits"
         ></app-style-unit>
     </div>
 </template>
