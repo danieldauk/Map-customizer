@@ -2,6 +2,7 @@
     <div class="controls">
         <app-styles></app-styles>
         <app-main></app-main>
+        <app-markers></app-markers>
     </div>
 </template>
 

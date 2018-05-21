@@ -56,6 +56,7 @@
         <input v-model="style.stylers[2].lightness" type="number" name="lightness" min="-100" max="100">
         <input v-model="style.stylers[3].saturation" type="number" name="saturation" min="-100" max="100">
         <input v-model="style.stylers[4].weight" type="number" name="weight" min="0">
+        <input v-model="style.stylers[5].hue" type="color">
         <button 
         v-if="this.$store.state.styles.length === this.index" @click="addStyle">Add Style
         </button>
@@ -83,7 +84,8 @@ export default {
             { color: "" },
             { lightness: 0 },
             { saturation: 0 },
-            { weight: 0 }
+            { weight: 0 },
+            { hue: "" }
             ]
         };
       } else {
@@ -92,7 +94,7 @@ export default {
 
         const unitStyle = this.$store.state.styles[this.index];
         const newStylersOrder = [];
-        const order = ["visibility", "color", "lightness", "saturation", "weight"];
+        const order = ["visibility", "color", "lightness", "saturation", "weight", "hue"];
         for(let y =0; y<order.length; y++){
           for(let i = 0; i<unitStyle.stylers.length; i++){
             if(unitStyle.stylers[i].hasOwnProperty(order[y])){
