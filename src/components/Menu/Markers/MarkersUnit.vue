@@ -36,7 +36,7 @@
 import GoogleMapsLoader from "google-maps";
 GoogleMapsLoader.key = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
 
-//https://png.icons8.com/color/angularjs/32
+
 export default {
   props: ["index"],
   computed: {
@@ -57,6 +57,12 @@ export default {
       //creating new instance of Google Marker
       const latitude = parseFloat(this.marker.lat);
       const longitude = parseFloat(this.marker.lng);
+
+      //change for icon url
+      //if absent, add standard icon
+        if(this.marker.iconSrc===""){
+            this.marker.iconSrc="https://png.icons8.com/color/angularjs/32";
+        }
 
       GoogleMapsLoader.load(google => {
         const marker = new google.maps.Marker({

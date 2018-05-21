@@ -1,5 +1,6 @@
 <template>
     <div 
+
     @click="changeStyle"
     class="preset-unit" :id="name">
 
@@ -10,23 +11,54 @@
 import GoogleMapsLoader from "google-maps";
 export default {
   props: ["index", "unit"],
-  computed:{
-      name(){
-          return `preset${this.index}`
-      }
+  data() {
+    //save map instance to change map center on
+    //main map center change
+    return {
+      savedMapInstance: ""
+    };
+  },
+  computed: {
+    name() {
+      return `preset${this.index}`;
+    },
+    //
+    centerChange() {
+      return this.$store.state.coordinates.lat;
+    },
+    zoomChange(){
+        return this.$store.state.zoom;
+    }
+  },
+  watch: {
+    centerChange: {
+      handler() {
+
+        this.savedMapInstance.setCenter({
+          lat: this.$store.state.coordinates.lat,
+          lng: this.$store.state.coordinates.lng
+        });
+      },
+      deep: true
+    },
+    zoomChange(){
+        this.savedMapInstance.setZoom(this.zoomChange);
+    }
   },
   methods: {
     loadMap() {
       // Google map container
-      const mapContainer = document.querySelector("#"+this.name);
+      const mapContainer = document.querySelector("#" + this.name);
       // Google map options object
       const options = {
         center: {
           lat: this.$store.state.coordinates.lat,
           lng: this.$store.state.coordinates.lng
         },
-          zoom: this.$store.state.zoom,
-          styles: this.unit[Object.keys(this.unit)[0]]
+        zoom: this.$store.state.zoom,
+        styles: this.unit[Object.keys(this.unit)[0]],
+        draggable: false,
+        disableDefaultUI: true
       };
 
       //Setting API key property of Google loader
@@ -35,22 +67,23 @@ export default {
       //creating new instance of Google map
       GoogleMapsLoader.load(google => {
         const map = new google.maps.Map(mapContainer, options);
-
+        this.savedMapInstance = map;
       });
     },
-    changeStyle(){
-        this.$store.dispatch("changeStyle", this.unit[Object.keys(this.unit)[0]]);
+    changeStyle() {
+      this.$store.dispatch("changeStyle", this.unit[Object.keys(this.unit)[0]]);
     }
   },
   mounted() {
     this.loadMap();
   }
-}
+};
 </script>
 
 <style lang="scss">
- .preset-unit{
-     width: 250px;
-     height: 150px;
- }
+.preset-unit {
+  width: 250px;
+  height: 150px;
+  cursor: pointer;
+}
 </style>

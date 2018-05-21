@@ -1,6 +1,7 @@
 <template>
     <div class="custom-unit">
-        <select name="featureType" v-model="style.featureType">
+        <select 
+        name="featureType" v-model="style.featureType">
             <option>all</option>
             <option>administrative</option>
             <option>administrative.country</option>
@@ -35,7 +36,8 @@
             <option>transit.station.rail</option>
             <option>water</option>
         </select>
-        <select name="elementType" v-model="style.elementType">
+        <select 
+        name="elementType" v-model="style.elementType">
             <option>all</option>
             <option>geometry</option>
             <option>geometry.fill</option>
@@ -46,16 +48,20 @@
             <option>labels.text</option>
             <option>labels.text.stroke</option>
         </select>
-        <select name="visibility"
+        <select 
+        name="visibility"
          v-model="style.stylers[0].visibility">
             <option>on</option>
             <option>off</option>
             <option>simplified</option>
         </select>
         <input v-model="style.stylers[1].color" type="color">
-        <input v-model="style.stylers[2].lightness" type="number" name="lightness" min="-100" max="100">
-        <input v-model="style.stylers[3].saturation" type="number" name="saturation" min="-100" max="100">
-        <input v-model="style.stylers[4].weight" type="number" name="weight" min="0">
+        <input 
+        v-model="style.stylers[2].lightness" type="number" name="lightness" min="-100" max="100">
+        <input
+         v-model="style.stylers[3].saturation" type="number" name="saturation" min="-100" max="100">
+        <input 
+        v-model="style.stylers[4].weight" type="number" name="weight" min="0">
         <input v-model="style.stylers[5].hue" type="color">
         <button 
         v-if="this.$store.state.styles.length === this.index" @click="addStyle">Add Style
@@ -77,14 +83,14 @@ export default {
     style() {
       if (this.$store.state.styles.length === this.index) {
         return {
-          featureType: "all",
-          elementType: "all",
+          featureType: "",
+          elementType: "",
           stylers: [
             { visibility: "" }, 
             { color: "" },
-            { lightness: 0 },
-            { saturation: 0 },
-            { weight: 0 },
+            { lightness: "" },
+            { saturation: "" },
+            { weight: "" },
             { hue: "" }
             ]
         };
