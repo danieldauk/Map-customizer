@@ -26,8 +26,9 @@ body {
 .myApp{
   display: grid;
   grid-template-columns: 400px auto;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 </style>
 

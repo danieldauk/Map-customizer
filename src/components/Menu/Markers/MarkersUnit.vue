@@ -12,7 +12,7 @@
             type="number" name="marker-longitude">
         </fieldset>
         <input 
-        placeholder="src url"
+        placeholder="Icon url"
         v-model="marker.iconSrc"
         type="url" name="marker-src">
         <label for="marker-src">Icon</label>
