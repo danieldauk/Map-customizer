@@ -3,6 +3,7 @@
         <app-styles></app-styles>
         <app-main></app-main>
         <app-markers></app-markers>
+        <app-presets></app-presets>
     </div>
 </template>
 

@@ -3,15 +3,19 @@
         <fieldset>
             <legend>Coordinates:</legend>
             <input 
+            placeholder="Latitude"
             v-model="marker.lat"
             type="number" name="marker-latitude">
             <input 
+            placeholder="Longitude"
             v-model="marker.lng"
             type="number" name="marker-longitude">
         </fieldset>
         <input 
+        placeholder="src url"
         v-model="marker.iconSrc"
         type="url" name="marker-src">
+        <label for="marker-src">Icon</label>
         <button 
         v-if="$store.state.markers.length === index"
          @click="addMarker">Add Marker</button>
@@ -32,15 +36,16 @@
 import GoogleMapsLoader from "google-maps";
 GoogleMapsLoader.key = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
 
+//https://png.icons8.com/color/angularjs/32
 export default {
   props: ["index"],
   computed: {
     marker() {
       if (this.$store.state.markers.length === this.index) {
         return {
-          lat: 54.687157,
-          lng: 25.279652,
-          iconSrc: "https://png.icons8.com/color/angularjs/32"
+          lat: "",
+          lng: "",
+          iconSrc: ""
         };
       } else {
         return this.$store.state.markers[this.index].markerInfo;

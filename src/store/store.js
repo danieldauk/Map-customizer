@@ -37,6 +37,20 @@ export const store = new Vuex.Store({
     saveMap(state, payload) {
       state.map = payload;
     },
+    changeStyle(state, payload) {
+        //update state
+        state.styles = payload;
+
+      //apply changes
+      state.map.setOptions({
+        center: {
+          lat: state.coordinates.lat,
+          lng: state.coordinates.lng
+        },
+        zoom: state.zoom,
+        styles: payload
+      });
+    },
     changeMain(state, payload) {
       if (payload[0] === "Lat") {
         state.coordinates.lat = payload[1];
@@ -87,9 +101,9 @@ export const store = new Vuex.Store({
       }
     },
     removeMarker(state, payload) {
-        state.markers[payload].markerInstance.setMap(null);
-        state.markers.splice(payload, 1);
-      }
+      state.markers[payload].markerInstance.setMap(null);
+      state.markers.splice(payload, 1);
+    }
   },
   actions: {
     addStyle(context, payload) {
@@ -98,6 +112,9 @@ export const store = new Vuex.Store({
     saveMap(context, payload) {
       context.commit("saveMap", payload);
     },
+    changeStyle(context, payload) {
+        context.commit("changeStyle", payload);
+      },
     changeMain(context, payload) {
       context.commit("changeMain", payload);
     },
@@ -108,9 +125,7 @@ export const store = new Vuex.Store({
       context.commit("addMarker", payload);
     },
     removeMarker(context, payload) {
-        context.commit("removeMarker", payload);
-      },
+      context.commit("removeMarker", payload);
+    }
   }
 });
-
-
