@@ -13,6 +13,7 @@ v-on:wheel="getZoom()">
 
 
 <script>
+import markersCollection from "./Menu/Markers/markersCollection.js"
 import GoogleMapsLoader from "google-maps";
 export default {
   data() {
@@ -60,33 +61,38 @@ export default {
         }
 
         //prepopulate map with markers
-
-        //options for google function custroctor
-        const markerOptions = {
-          position: { lat: 54.687157, lng: 25.279652 },
-          icon: "https://png.icons8.com/color/angularjs/32",
-          title: "Angular",
-          map: map,
-          draggable: true,
-          marker_id: Math.random()
-        };
-
-        // info for MarkersUnit component
-        const markerInfo = {
-          lat: 54.687157,
-          lng: 25.279652,
-          iconSrc: "https://png.icons8.com/color/angularjs/32",
-          title: "Angular"
-        }
-
-        const marker = new google.maps.Marker(markerOptions);
-        console.log(marker);
-        console.log(marker.get('marker_id'));
-        this.$store.dispatch("addMarker", {
-          index: 0,
-          markerInfo: markerInfo,
-          markerInstance: marker
+        markersCollection.forEach(element => {
+          this.initMarkers(map, ...element);
         });
+        /*this.initMarkers(map, ...markersCollection);
+          map,
+          54.687157,
+          25.279651,
+          "https://png.icons8.com/color/50/000000/html-5.png",
+          "HTML5"
+        );
+        this.initMarkers(
+          map,
+          54.704342,
+          25.280381,
+          "https://png.icons8.com/ios/50/00d8ff/react-native.png",
+          "React"
+        );
+        this.initMarkers(
+          map,
+          54.697157,
+          25.269651,
+          "https://png.icons8.com/ios/50/f7df1e/javascript-filled.png",
+          "Javascript"
+        );
+        this.initMarkers(
+          map,
+          54.697157,
+          25.299651,
+          "https://png.icons8.com/color/50/000000/css3.png",
+          "CSS3"
+        );*/
+        
       });
     },
     //update center of map
@@ -100,6 +106,32 @@ export default {
     getZoom() {
       const zoom = this.savedMap.getZoom();
       this.$store.dispatch("changeMain", ["zoom", zoom]);
+    },
+    initMarkers(map, lat, lng, iconUrl, title) {
+      const markerOptions = {
+        position: { lat: lat, lng: lng },
+        icon: iconUrl,
+        title: title,
+        map: map,
+        draggable: true,
+        marker_id: Math.random()
+      };
+      // info for MarkersUnit component
+      const markerInfo = {
+        lat: lat,
+        lng: lng,
+        iconSrc: iconUrl,
+        title: title
+      };
+ 
+      //create instance
+      const marker = new google.maps.Marker(markerOptions);
+  
+      this.$store.dispatch("addMarker", {
+        index: this.$store.state.markers.length,
+        markerInfo: markerInfo,
+        markerInstance: marker
+      });
     }
   },
   mounted() {

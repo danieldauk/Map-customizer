@@ -1,0 +1,26 @@
+export default [
+  [
+    54.677157,
+    25.279651,
+    "https://png.icons8.com/color/50/000000/html-5.png",
+    "HTML5"
+  ],
+  [
+    54.694342,
+    25.280381,
+    "https://png.icons8.com/ios/50/00d8ff/react-native.png",
+    "React"
+  ],
+  [
+    54.687157,
+    25.269651,
+    "https://png.icons8.com/ios/50/f7df1e/javascript-filled.png",
+    "Javascript"
+  ],
+  [
+    54.687157,
+    25.299651,
+    "https://png.icons8.com/color/50/000000/css3.png",
+    "CSS3"
+  ]
+];

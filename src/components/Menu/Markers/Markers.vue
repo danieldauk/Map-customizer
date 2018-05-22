@@ -2,6 +2,7 @@
     <div class="markers">
         <fieldset>
             <legend>Markers: </legend>
+            <app-add-marker></app-add-marker>
             <app-markers-unit
             :key="unit.markerInstance.get('marker_id')"
             :index="index"
@@ -14,6 +15,7 @@
 <script>
 
 import MarkersUnit from "./MarkersUnit.vue";
+import AddMarker from "./AddMarker.vue";
 export default {
   
   computed: {
@@ -22,7 +24,8 @@ export default {
     }
   },
   components: {
-    appMarkersUnit: MarkersUnit
+    appMarkersUnit: MarkersUnit,
+    appAddMarker: AddMarker
   }
 };
 </script>

@@ -15,91 +15,33 @@
         placeholder="Icon url"
         v-model="marker.iconSrc"
         type="url" name="marker-src">
-        <label for="marker-src">Icon</label>
-        <button 
-        v-if="$store.state.markers.length === index"
-         @click="addMarker">Add Marker</button>
+        <label for="marker-src">Icon url</label>
+        <input 
+        placeholder="Marker title"
+        v-model="marker.title"
+        type="url" name="marker-title">
+        <label for="marker-title">Marker title</label>
          <button 
-        v-if="$store.state.markers.length !== index"
          @click="changeMarker">Change Marker</button>
          <button 
-        v-if="$store.state.markers.length !== index"
          @click="removeMarker">Remove Marker</button>
 
     </div>
 </template>
 
 <script>
-//add markers with various Js frameworks
-//and languages
-//import google maps loader and set api key
-import GoogleMapsLoader from "google-maps";
-GoogleMapsLoader.key = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
-
 
 export default {
   props: ["index"],
   computed: {
     marker() {
-
-      if (this.$store.state.markers.length === this.index) {
-        return {
-          lat: "",
-          lng: "",
-          iconSrc: "",
-          title: "Hello"
-        };
-      } else {
         return this.$store.state.markers[this.index].markerInfo;
-      }
     },
     markerInstance(){
-      if (this.$store.state.markers.length === this.index){
-        return ""
-      } else {
-        console.log("?");
-        //add event listener to change coords at dragend
-
-        //return markerInstance
         return this.$store.state.markers[this.index].markerInstance;
-      }
     }
   },
   methods: {
-    addMarker() {
-      //creating new instance of Google Marker
-      const latitude = parseFloat(this.marker.lat);
-      const longitude = parseFloat(this.marker.lng);
-
-      //change for icon url
-      //if absent, add standard icon
-        if(this.marker.iconSrc===""){
-            this.marker.iconSrc="https://png.icons8.com/color/angularjs/32";
-        }
-
-      GoogleMapsLoader.load(google => {
-        const marker = new google.maps.Marker({
-          position: { lat: latitude, lng: longitude },
-          icon: this.marker.iconSrc,
-          title: this.marker.title,
-          map: this.$store.state.map,
-          draggable: true,
-          marker_id: Math.random()
-        });
-
-        //save instance for later use
-        this.markerInstance = marker;
-
-        //add event listener to change coords at dragend
-        marker.addListener("dragend", this.changeCoord);
-
-        this.$store.dispatch("addMarker", {
-          index: this.index,
-          markerInfo: this.marker,
-          markerInstance: marker
-        });
-      });
-    },
     changeCoord(){
       //after dragend read new coordiantes of marker
       const latitude = this.markerInstance.getPosition().lat();
@@ -134,9 +76,7 @@ export default {
     }
   },
   mounted(){
-    if(this.markerInstance !== ""){
       this.$store.state.markers[this.index].markerInstance.addListener("dragend", this.changeCoord);
-    }
   }
 };
 </script>
