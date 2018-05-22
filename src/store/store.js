@@ -90,8 +90,7 @@ export const store = new Vuex.Store({
           markerInfo: payload.markerInfo,
           markerInstance: payload.markerInstance
         });
-        console.log(payload);
-        console.log(state.markers);
+
       } else {
         // else change existing one
         state.markers[payload.index] = {
@@ -102,6 +101,7 @@ export const store = new Vuex.Store({
     },
     removeMarker(state, payload) {
       state.markers[payload].markerInstance.setMap(null);
+      
       state.markers.splice(payload, 1);
     }
   },

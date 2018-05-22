@@ -41,14 +41,27 @@ export default {
   props: ["index"],
   computed: {
     marker() {
+
       if (this.$store.state.markers.length === this.index) {
         return {
           lat: "",
           lng: "",
-          iconSrc: ""
+          iconSrc: "",
+          title: "Hello"
         };
       } else {
         return this.$store.state.markers[this.index].markerInfo;
+      }
+    },
+    markerInstance(){
+      if (this.$store.state.markers.length === this.index){
+        return ""
+      } else {
+        console.log("?");
+        //add event listener to change coords at dragend
+
+        //return markerInstance
+        return this.$store.state.markers[this.index].markerInstance;
       }
     }
   },
@@ -68,8 +81,17 @@ export default {
         const marker = new google.maps.Marker({
           position: { lat: latitude, lng: longitude },
           icon: this.marker.iconSrc,
-          map: this.$store.state.map
+          title: this.marker.title,
+          map: this.$store.state.map,
+          draggable: true,
+          marker_id: Math.random()
         });
+
+        //save instance for later use
+        this.markerInstance = marker;
+
+        //add event listener to change coords at dragend
+        marker.addListener("dragend", this.changeCoord);
 
         this.$store.dispatch("addMarker", {
           index: this.index,
@@ -78,11 +100,28 @@ export default {
         });
       });
     },
+    changeCoord(){
+      //after dragend read new coordiantes of marker
+      const latitude = this.markerInstance.getPosition().lat();
+      const longitude = this.markerInstance.getPosition().lng();
+
+      //update computed property and change state
+      this.marker.lat = latitude;
+      this.marker.lng = longitude;
+      this.changeMarker();
+    },
     changeMarker() {
+      console.log(this.index);
+      //read coordinates input
       const latitude = parseFloat(this.marker.lat);
       const longitude = parseFloat(this.marker.lng);
+
+      //change position of marker (instance stored in store)
       this.$store.state.markers[this.index].markerInstance.setPosition({ lat: latitude, lng: longitude });
+      //change icon 
       this.$store.state.markers[this.index].markerInstance.setIcon(this.marker.iconSrc);
+
+
       this.$store.dispatch("addMarker", {
         index: this.index,
         markerInfo: this.marker,
@@ -90,7 +129,13 @@ export default {
       });
     },
     removeMarker(){
+      
       this.$store.dispatch("removeMarker", this.index)
+    }
+  },
+  mounted(){
+    if(this.markerInstance !== ""){
+      this.$store.state.markers[this.index].markerInstance.addListener("dragend", this.changeCoord);
     }
   }
 };

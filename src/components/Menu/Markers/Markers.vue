@@ -3,7 +3,7 @@
         <fieldset>
             <legend>Markers: </legend>
             <app-markers-unit
-            :key="Math.random()*10"
+            :key="unit.markerInstance.get('marker_id')"
             :index="index"
             v-for="(unit, index) in markersUnits"
             ></app-markers-unit>
@@ -15,9 +15,10 @@
 
 import MarkersUnit from "./MarkersUnit.vue";
 export default {
+  
   computed: {
     markersUnits() {
-      return this.$store.state.markers.length + 1;
+      return this.$store.state.markers;
     }
   },
   components: {
