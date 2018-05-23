@@ -71,7 +71,12 @@ export default {
       });
     },
     changeStyle() {
-      this.$store.dispatch("changeStyle", this.unit[Object.keys(this.unit)[0]]);
+      // make copy of object in order to 
+      //delete only copy of styles in styles section
+      const objCopy = Object.assign({}, this.unit);
+
+      //dispatch action
+      this.$store.dispatch("changeStyle", objCopy[Object.keys(objCopy)[0]]);
     }
   },
   mounted() {

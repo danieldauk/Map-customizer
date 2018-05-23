@@ -70,8 +70,8 @@ export default {
     },
     //update center of map
     getCenter() {
-      const lat = parseFloat(this.savedMap.getCenter().lat().toFixed(6));
-      const lng = parseFloat(this.savedMap.getCenter().lng().toFixed(6));
+      const lat = parseFloat(this.savedMap.getCenter().lat().toFixed(4));
+      const lng = parseFloat(this.savedMap.getCenter().lng().toFixed(4));
       this.$store.dispatch("changeMain", ["Lat", lat]);
       this.$store.dispatch("changeMain", ["Lng", lng]);
     },
