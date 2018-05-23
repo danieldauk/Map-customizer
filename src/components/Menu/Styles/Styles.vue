@@ -1,13 +1,13 @@
 <template>
     <div class="styles">
-      <fieldset>
-          <legend>Styles:</legend>
+      <div class="slide-title">Styles</div>
+          <div class="styles-column-reverse">
           <app-style-unit
             :key="Math.random()"
             :index="index"
             v-for="(unit, index) in activeUnits"
             ></app-style-unit>
-          </fieldset>
+          </div>
         
     </div>
 </template>
@@ -32,5 +32,10 @@ export default {
 .styles{
   max-height: 100vh;
   overflow:auto;
+}
+
+.styles-column-reverse{
+  display:flex;
+  flex-direction: column-reverse;
 }
 </style>

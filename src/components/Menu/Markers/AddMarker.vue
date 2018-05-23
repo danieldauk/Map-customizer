@@ -3,10 +3,12 @@
         <fieldset>
             <legend>Coordinates:</legend>
             <input 
+            step="0.0001"
             placeholder="Latitude"
             v-model="marker.lat"
             type="number" name="marker-latitude">
             <input 
+            step="0.0001"
             placeholder="Longitude"
             v-model="marker.lng"
             type="number" name="marker-longitude">
@@ -48,8 +50,8 @@ export default {
             return false;
         }
       //creating new instance of Google Marker
-      const latitude = parseFloat(this.marker.lat);
-      const longitude = parseFloat(this.marker.lng);
+      const latitude = parseFloat((this.marker.lat).toFixed(4));
+      const longitude = parseFloat((this.marker.lng).toFixed(4));
 
       //change for icon url
       //if absent, add standard icon

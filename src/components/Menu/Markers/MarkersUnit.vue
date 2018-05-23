@@ -5,8 +5,10 @@
             <input 
             placeholder="Latitude"
             v-model="marker.lat"
+            step="0.0001"
             type="number" name="marker-latitude">
             <input 
+            step="0.0001"            
             placeholder="Longitude"
             v-model="marker.lng"
             type="number" name="marker-longitude">
@@ -48,8 +50,8 @@ export default {
       const longitude = this.markerInstance.getPosition().lng();
 
       //update computed property and change state
-      this.marker.lat = latitude.toFixed(6);
-      this.marker.lng = longitude.toFixed(6);
+      this.marker.lat = latitude.toFixed(4);
+      this.marker.lng = longitude.toFixed(4);
       this.changeMarker();
     },
     changeMarker() {

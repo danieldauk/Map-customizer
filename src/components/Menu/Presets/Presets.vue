@@ -1,5 +1,6 @@
 <template>
     <div class="presets">
+      <div class="slide-title">Presets</div>
           <app-presets-unit
             :key="Math.random()*100"
             :index="index"

@@ -7,8 +7,8 @@ export const store = new Vuex.Store({
   state: {
     map: "",
     coordinates: {
-      lat: 54.687157,
-      lng: 25.279652
+      lat: 54.6872,
+      lng: 25.2797
     },
     zoom: 14,
     markers: [],

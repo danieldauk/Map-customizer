@@ -130,7 +130,7 @@ export default {
     transform: rotate(180deg);
     font-size:20px;
     color: $color-white;
-    margin-bottom: 12.5px;
+    margin: 12.5px 0;
     font-weight: 500;
 
 

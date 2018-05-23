@@ -1,5 +1,6 @@
 <template>
     <div class="markers">
+      <div class="slide-title">Markers</div>
         <fieldset>
             <legend>Markers: </legend>
             <app-add-marker></app-add-marker>
