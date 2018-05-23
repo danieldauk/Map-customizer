@@ -48,16 +48,14 @@ export default {
       const longitude = this.markerInstance.getPosition().lng();
 
       //update computed property and change state
-      this.marker.lat = latitude;
-      this.marker.lng = longitude;
+      this.marker.lat = latitude.toFixed(6);
+      this.marker.lng = longitude.toFixed(6);
       this.changeMarker();
     },
     changeMarker() {
-      console.log(this.index);
       //read coordinates input
       const latitude = parseFloat(this.marker.lat);
       const longitude = parseFloat(this.marker.lng);
-
       //change position of marker (instance stored in store)
       this.$store.state.markers[this.index].markerInstance.setPosition({ lat: latitude, lng: longitude });
       //change icon 

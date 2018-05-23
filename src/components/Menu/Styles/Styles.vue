@@ -28,4 +28,9 @@ export default {
 
 
 <style lang="scss">
+
+.styles{
+  max-height: 100vh;
+  overflow:auto;
+}
 </style>

@@ -12,11 +12,12 @@
             <input @change="changeZoom"  :value="zoom" min="0" max="18" name="zoom" type="number">
             <label for="zoom">Zoom</label>
         </fieldset>
-        
+
     </div>
 </template>
 
 <script>
+
 export default {
   computed: {
     latitude() {
@@ -44,4 +45,8 @@ export default {
 </script>
 
 <style lang="scss">
+.main{
+  max-height: 100vh;
+  overflow:auto;
+}
 </style>

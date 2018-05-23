@@ -64,41 +64,14 @@ export default {
         markersCollection.forEach(element => {
           this.initMarkers(map, ...element);
         });
-        /*this.initMarkers(map, ...markersCollection);
-          map,
-          54.687157,
-          25.279651,
-          "https://png.icons8.com/color/50/000000/html-5.png",
-          "HTML5"
-        );
-        this.initMarkers(
-          map,
-          54.704342,
-          25.280381,
-          "https://png.icons8.com/ios/50/00d8ff/react-native.png",
-          "React"
-        );
-        this.initMarkers(
-          map,
-          54.697157,
-          25.269651,
-          "https://png.icons8.com/ios/50/f7df1e/javascript-filled.png",
-          "Javascript"
-        );
-        this.initMarkers(
-          map,
-          54.697157,
-          25.299651,
-          "https://png.icons8.com/color/50/000000/css3.png",
-          "CSS3"
-        );*/
+        
         
       });
     },
     //update center of map
     getCenter() {
-      const lat = this.savedMap.getCenter().lat();
-      const lng = this.savedMap.getCenter().lng();
+      const lat = parseFloat(this.savedMap.getCenter().lat().toFixed(6));
+      const lng = parseFloat(this.savedMap.getCenter().lng().toFixed(6));
       this.$store.dispatch("changeMain", ["Lat", lat]);
       this.$store.dispatch("changeMain", ["Lng", lng]);
     },

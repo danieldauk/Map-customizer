@@ -31,4 +31,9 @@ export default {
 </script>
 
 <style lang="scss">
+
+.markers{
+  max-height: 100vh;
+  overflow:auto;
+}
 </style>
