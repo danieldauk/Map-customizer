@@ -96,11 +96,15 @@
       </button>
       </div>
       <div v-if="this.$store.state.styles.length !== this.index" class="custom-style-buttons">
-      <button v-if="this.$store.state.styles.length !== this.index" @click="addStyle">Change Style</button>
-      <button  @click="removeStyle">&times;</button>
+      <button class="add-style" @click="addStyle">Change Style</button>
+      <div>
+          <button 
+          @click="removeAllStyles"
+          class="clear-all">clear all</button>
+          <button  @click="removeStyle">&times;</button>
+      </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -156,13 +160,26 @@ export default {
   },
   methods: {
     addStyle() {
+      //add style
       this.$store.dispatch("addStyle", {
         index: this.index,
         style: this.style
       });
+
+      //remove activePresetName 
+      this.$store.dispatch("setActivePreset", "");
     },
     removeStyle() {
       this.$store.dispatch("removeStyle", this.index);
+
+      //remove activePresetName 
+      this.$store.dispatch("setActivePreset", "");
+    },
+    removeAllStyles(){
+      this.$store.dispatch("removeAllStyles");
+
+      //remove activePresetName 
+      this.$store.dispatch("setActivePreset", "");
     }
   }
 };
@@ -211,6 +228,7 @@ input[type="color"] {
   opacity: 0.5;
   border: none;
   cursor: pointer;
+  padding: 0;
   &:hover {
     opacity: 1;
   }
@@ -245,6 +263,59 @@ input[type="color"] {
 .custom-style-buttons {
   display: flex;
   justify-content: center;
+
+  div {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 85px;
+    height: 18px;
+    &:hover .clear-all {
+      width: 60px;
+      right: 25px;
+    }
+    button {
+      &:last-child {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        height: 18px;
+        width: 18px;
+        color: $color-white;
+        font-size: 25px;
+        background: $color-red;
+        border-radius: 2px;
+        line-height: 0;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+      }
+    }
+  }
+
+  .clear-all {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    height: 18px;
+    width: 0;
+    z-index: 1;
+    transition: 0.2s;
+    overflow: hidden;
+    color: $color-white;
+    border-radius: 2px;
+
+    &:hover {
+      background: $color-red;
+
+    }
+  }
+
   button {
     border: none;
     cursor: pointer;
@@ -259,33 +330,15 @@ input[type="color"] {
       transform: scale(1.02);
       box-shadow: 0 1px 5px rgba($color-black, 0.3);
     }
-
-    &:first-child {
-      background: $color-blue;
-      color: $color-white;
-      border-radius: 5px;
-      padding: 8px 15px;
-      margin: 5px 0px;
-      font-size: 15px;
-    }
-    &:last-child {
-      display:flex;
-      justify-content: center;
-      align-content: center;
-      height:18px;
-      width:18px;
-      color: $color-white;
-      font-size: 25px;
-      background: $color-red;
-      position: absolute;
-      border-radius: 2px;
-
-      line-height: 0;
-      top: 5px;
-      right: 5px;
-      margin: 0;
-      padding: 0;
-    }
   }
+}
+
+.add-style {
+  background: $color-blue;
+  color: $color-white;
+  border-radius: 5px;
+  padding: 8px 15px;
+  margin: 5px 0px;
+  font-size: 15px;
 }
 </style>

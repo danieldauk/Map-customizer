@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
     },
     zoom: 14,
     markers: [],
-    styles: []
+    styles: [],
+    activePreset: ""
   },
   getters: {},
   mutations: {
@@ -83,6 +84,19 @@ export const store = new Vuex.Store({
         styles: state.styles
       });
     },
+    removeAllStyles(state) {
+      state.styles = [];
+
+      //apply changes
+      state.map.setOptions({
+        center: {
+          lat: state.coordinates.lat,
+          lng: state.coordinates.lng
+        },
+        zoom: state.zoom,
+        styles: state.styles
+      });
+    },
     addMarker(state, payload) {
       //if it's new marker, push to array
       if (payload.index === state.markers.length) {
@@ -103,6 +117,9 @@ export const store = new Vuex.Store({
       state.markers[payload].markerInstance.setMap(null);
       
       state.markers.splice(payload, 1);
+    },
+    setActivePreset(state, payload){
+      state.activePreset = payload;
     }
   },
   actions: {
@@ -121,11 +138,17 @@ export const store = new Vuex.Store({
     removeStyle(context, payload) {
       context.commit("removeStyle", payload);
     },
+    removeAllStyles(context) {
+      context.commit("removeAllStyles");
+    },
     addMarker(context, payload) {
       context.commit("addMarker", payload);
     },
     removeMarker(context, payload) {
       context.commit("removeMarker", payload);
+    },
+    setActivePreset(context, payload) {
+      context.commit("setActivePreset", payload);
     }
   }
 });
