@@ -66,7 +66,9 @@
     </div>
     <div class="custom-style-unit">
       <label for="color">color:</label>
-      <input name="color" v-model="style.stylers[1].color" type="color">
+      <input 
+      placeholder="HEX color #ffffff"
+      name="color" v-model="style.stylers[1].color" type="color">
     </div>
     <div class="custom-style-unit">
       <label for="lightness">lightness:</label>
@@ -89,7 +91,9 @@
     </div>
     <div class="custom-style-unit">
       <label for="hue">hue:</label>
-      <input name="hue" v-model="style.stylers[5].hue" type="color">
+      <input 
+      placeholder="HEX color #ffffff"
+      name="hue" v-model="style.stylers[5].hue" type="color">
     </div>
     <div v-if="this.$store.state.styles.length === this.index" class="custom-style-button">
       <button  @click="addStyle">Add Style
