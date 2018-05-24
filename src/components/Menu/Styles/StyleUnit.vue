@@ -344,9 +344,16 @@ input[type="color"] {
 }
 
 @media (max-width: 800px) {
+  input[type="color"], input, select {
+  width: 90%;
+  }
+
+  input[type="color"]{
+  border: 1px solid $color-grey-medium;
+  height: 18px;
+  }
+
   .custom-style-buttons {
-    display: flex;
-    justify-content: center;
 
     div {
       position: absolute;
@@ -354,28 +361,16 @@ input[type="color"] {
       right: 5px;
       width: 85px;
       height: 18px;
-      &:hover .clear-all {
+      width: 100%;
+      .clear-all {
         width: 60px;
-        right: 25px;
+        left: 10px;
+        background: $color-red;
       }
       button {
         &:last-child {
-          display: flex;
-          justify-content: center;
-          align-content: center;
-          height: 18px;
-          width: 18px;
-          color: $color-white;
-          font-size: 25px;
-          background: $color-red;
-          border-radius: 2px;
+          font-size: 16px;
           line-height: 1;
-          margin: 0;
-          padding: 0;
-          position: absolute;
-          top: 0;
-          right: 0;
-          z-index: 2;
         }
       }
     }
