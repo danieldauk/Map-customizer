@@ -344,12 +344,12 @@ input[type="color"] {
 }
 
 @media (max-width: 800px) {
-  input[type="color"], input, select {
+  input[type="color"], input[type="number"], select {
   width: 90%;
   }
 
   input[type="color"]{
-  border: 1px solid $color-grey-medium;
+  border-bottom: 1px solid $color-grey-medium;
   height: 18px;
   }
 

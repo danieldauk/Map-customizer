@@ -216,4 +216,29 @@ export default {
   margin: 5px 0px;
   font-size: 15px;
 }
+
+@media(max-width: 800px){
+  .custom-style-buttons {
+
+    div {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 85px;
+      height: 18px;
+      width: 100%;
+      .clear-all {
+        width: 60px;
+        left: 10px;
+        background: $color-red;
+      }
+      button {
+        &:last-child {
+          font-size: 16px;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
 </style>
