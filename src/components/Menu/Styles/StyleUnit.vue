@@ -370,8 +370,8 @@ input[type="color"] {
       }
       button {
         &:last-child {
-          font-size: 16px;
-          line-height: 1.125;
+          font-size: 18px;
+          line-height: 1;
         }
       }
     }
