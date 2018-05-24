@@ -163,4 +163,34 @@ export default {
   transition: 0.3s ease-in-out;
   transform: translateX(calc(-100% - 50px));
 }
+
+@media(max-width: 800px){
+  .controls {
+  height: auto;
+  grid-template-columns: auto;
+  grid-template-rows: 50px auto;
+  }
+
+  .control-sidebar{
+  grid-template-rows:auto;
+  width: 100%;
+}
+
+.control-buttons{
+  display:flex;
+  height: 50px;
+  width:100%;
+}
+
+.control-button{
+  border: none;
+  &:not(:last-child){
+    border-right: 1px solid rgba($color-white, 0.2);
+  }
+}
+
+.control-logo{
+  display: none;
+}
+}
 </style>

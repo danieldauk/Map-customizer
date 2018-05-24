@@ -1,7 +1,7 @@
 <template>
 <div class="myApp">
   <app-controls></app-controls>
-  <app-map></app-map>
+  <app-map class="app-map"></app-map>
 </div>
 </template>
 
@@ -44,6 +44,18 @@ body {
   height: 100vh;
   width: 100%;
   overflow: hidden;
+}
+
+@media(max-width: 800px){
+  .myApp{
+  grid-template-columns: auto;
+  grid-auto-rows: 250px auto;
+
+  }
+
+  .app-map{
+    grid-row: 1 / 2;
+  }
 }
 </style>
 

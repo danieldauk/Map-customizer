@@ -38,4 +38,6 @@ export default {
   display:flex;
   flex-direction: column-reverse;
 }
+
+
 </style>
