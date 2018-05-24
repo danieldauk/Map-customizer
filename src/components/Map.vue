@@ -38,7 +38,7 @@ export default {
       };
 
       //Setting API key property of Google loader
-      GoogleMapsLoader.key = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
+      GoogleMapsLoader.KEY = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
 
       //creating new instance of Google map
       GoogleMapsLoader.load(google => {

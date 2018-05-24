@@ -30,7 +30,7 @@
 
 <script>
 import GoogleMapsLoader from "google-maps";
-GoogleMapsLoader.key = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
+GoogleMapsLoader.KEY = "AIzaSyD5REs3jCVewYEstPogCmQ2UfGemY-z5lg";
 export default {
   data() {
     return {
