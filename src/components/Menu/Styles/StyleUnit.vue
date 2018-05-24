@@ -280,7 +280,7 @@ input[type="color"] {
       &:last-child {
         display: flex;
         justify-content: center;
-        align-content: center;
+        align-items: center;
         height: 18px;
         width: 18px;
         color: $color-white;
