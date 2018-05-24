@@ -27,7 +27,7 @@
           <button 
           @click="removeAllMarkers"
           class="clear-all">clear all</button>
-          <button  @click="removeMarker"><i class="fas fa-times"></i></button>
+          <button  @click="removeMarker">&times;</button>
       </div>
       </div>
 
@@ -165,9 +165,7 @@ export default {
         top: 0;
         right: 0;
         z-index: 2;
-        .fa-times{
-          font-size: 11px;
-        }
+        font-size: 16px;
       }
     }
   }

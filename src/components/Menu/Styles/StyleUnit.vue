@@ -105,7 +105,7 @@
           <button 
           @click="removeAllStyles"
           class="clear-all">clear all</button>
-          <button  @click="removeStyle"><i class="fas fa-times"></i></button>
+          <button  @click="removeStyle">&times;</button>
       </div>
       </div>
     </div>
@@ -296,10 +296,7 @@ input[type="color"] {
         top: 0;
         right: 0;
         z-index: 2;
-        
-        .fa-times{
-          font-size:11px;
-        }
+        font-size: 16px;
       }
     }
   }
