@@ -30,7 +30,9 @@
       </div>
       
       <transition name="menu" mode="out-in">
+        <keep-alive>
           <component :is="show"></component>
+        </keep-alive>
       </transition> 
     </div>
 </template>
@@ -68,8 +70,11 @@ export default {
   height: 100vh;
   display: grid;
   grid-template-columns: 50px auto;
+
+  
   
 }
+
 
 .control-sidebar{
   background: $color-blue;

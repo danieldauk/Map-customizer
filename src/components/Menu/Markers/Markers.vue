@@ -1,24 +1,22 @@
 <template>
     <div class="markers">
       <div class="slide-title">Markers</div>
-        <fieldset>
-            <legend>Markers: </legend>
+          <div class="markers-container">
             <app-add-marker></app-add-marker>
             <app-markers-unit
             :key="unit.markerInstance.get('marker_id')"
             :index="index"
             v-for="(unit, index) in markersUnits"
             ></app-markers-unit>
-        </fieldset>
+          </div>
+            
     </div>
 </template>
 
 <script>
-
 import MarkersUnit from "./MarkersUnit.vue";
 import AddMarker from "./AddMarker.vue";
 export default {
-  
   computed: {
     markersUnits() {
       return this.$store.state.markers;
@@ -32,9 +30,12 @@ export default {
 </script>
 
 <style lang="scss">
-
-.markers{
+.markers {
   max-height: 100vh;
-  overflow:auto;
+  overflow: auto;
+}
+
+.markers-container{
+  padding: 0 10px;
 }
 </style>

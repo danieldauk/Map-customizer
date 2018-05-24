@@ -17,12 +17,25 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../src/SASS/variables";
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   outline: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background:$color-grey-light;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: $color-grey-light2;
 }
 
 .myApp{

@@ -118,6 +118,16 @@ export const store = new Vuex.Store({
       
       state.markers.splice(payload, 1);
     },
+    removeAllMarkers(state){
+
+      //remove markers from map
+      state.markers.forEach(el=>{
+        el.markerInstance.setMap(null);
+      });
+
+      //set markers array to empty
+      state.markers = [];
+    },
     setActivePreset(state, payload){
       state.activePreset = payload;
     }
@@ -146,6 +156,9 @@ export const store = new Vuex.Store({
     },
     removeMarker(context, payload) {
       context.commit("removeMarker", payload);
+    },
+    removeAllMarkers(context) {
+      context.commit("removeAllMarkers");
     },
     setActivePreset(context, payload) {
       context.commit("setActivePreset", payload);
