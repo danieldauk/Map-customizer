@@ -27,7 +27,7 @@
           <button 
           @click="removeAllMarkers"
           class="clear-all">clear all</button>
-          <button  @click="removeMarker">&times;</button>
+          <button  @click="removeMarker"><i class="fas fa-times"></i></button>
       </div>
       </div>
 
@@ -157,16 +157,17 @@ export default {
         height: 18px;
         width: 18px;
         color: $color-white;
-        font-size: 25px;
         background: $color-red;
         border-radius: 2px;
-        line-height: 0;
         margin: 0;
         padding: 0;
         position: absolute;
         top: 0;
         right: 0;
         z-index: 2;
+        .fa-times{
+          font-size: 11px;
+        }
       }
     }
   }
@@ -184,6 +185,7 @@ export default {
     overflow: hidden;
     color: $color-white;
     border-radius: 2px;
+    font-weight: 700;
 
     &:hover {
       background: $color-red;
@@ -232,12 +234,6 @@ export default {
         width: 60px;
         left: 10px;
         background: $color-red;
-      }
-      button {
-        &:last-child {
-          font-size: 16px;
-          line-height: 18px;
-        }
       }
     }
   }

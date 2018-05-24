@@ -101,7 +101,7 @@
           <button 
           @click="removeAllStyles"
           class="clear-all">clear all</button>
-          <button  @click="removeStyle">&times;</button>
+          <button  @click="removeStyle"><i class="fas fa-times"></i></button>
       </div>
       </div>
     </div>
@@ -284,16 +284,18 @@ input[type="color"] {
         height: 18px;
         width: 18px;
         color: $color-white;
-        font-size: 25px;
         background: $color-red;
         border-radius: 2px;
-        line-height: 0;
         margin: 0;
         padding: 0;
         position: absolute;
         top: 0;
         right: 0;
         z-index: 2;
+        
+        .fa-times{
+          font-size:11px;
+        }
       }
     }
   }
@@ -311,6 +313,7 @@ input[type="color"] {
     overflow: hidden;
     color: $color-white;
     border-radius: 2px;
+    font-weight: 700;
 
     &:hover {
       background: $color-red;
