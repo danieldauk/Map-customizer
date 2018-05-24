@@ -13,7 +13,7 @@ v-on:wheel="getZoom()">
 
 
 <script>
-import markersCollection from "./Menu/Markers/markersCollection.js"
+import markersCollection from "./Menu/Markers/markersCollection.js";
 import GoogleMapsLoader from "google-maps";
 export default {
   data() {
@@ -55,23 +55,33 @@ export default {
           addWheelListener.bind(this)
         );
         function addWheelListener() {
-          document
-            .querySelector(".map .gm-style div")
-            .addEventListener("wheel", this.getZoom);
+          const map = document.querySelector(".map .gm-style div");
+          map.addEventListener("wheel", this.getZoom);
+
+          //get zoom on touch screens
+          map.addEventListener("touchend", this.getZoom);
         }
 
         //prepopulate map with markers
         markersCollection.forEach(element => {
           this.initMarkers(map, ...element);
         });
-        
-        
       });
     },
     //update center of map
     getCenter() {
-      const lat = parseFloat(this.savedMap.getCenter().lat().toFixed(4));
-      const lng = parseFloat(this.savedMap.getCenter().lng().toFixed(4));
+      const lat = parseFloat(
+        this.savedMap
+          .getCenter()
+          .lat()
+          .toFixed(4)
+      );
+      const lng = parseFloat(
+        this.savedMap
+          .getCenter()
+          .lng()
+          .toFixed(4)
+      );
       this.$store.dispatch("changeMain", ["Lat", lat]);
       this.$store.dispatch("changeMain", ["Lng", lng]);
     },
@@ -96,10 +106,10 @@ export default {
         iconSrc: iconUrl,
         title: title
       };
- 
+
       //create instance
       const marker = new google.maps.Marker(markerOptions);
-  
+
       this.$store.dispatch("addMarker", {
         index: this.$store.state.markers.length,
         markerInfo: markerInfo,
