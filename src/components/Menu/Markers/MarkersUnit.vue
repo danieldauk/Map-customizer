@@ -166,6 +166,7 @@ export default {
         right: 0;
         z-index: 2;
         font-size: 16px;
+        line-height: 18px;
       }
     }
   }
