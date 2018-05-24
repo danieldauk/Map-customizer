@@ -1446,8 +1446,7 @@ export default [
             lightness: 35
           }
         ]
-      },
-      {},
+      },     
       {
         featureType: "poi.medical",
         elementType: "geometry.fill",
@@ -1463,17 +1462,6 @@ export default [
           }
         ]
       },
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
       {
         elementType: "labels"
       },
@@ -1487,8 +1475,7 @@ export default [
             lightness: 32
           }
         ]
-      },
-      {},
+      },  
       {
         featureType: "poi.government",
         stylers: [
@@ -1539,9 +1526,6 @@ export default [
           }
         ]
       },
-      {},
-      {},
-      {}
     ]
   }
 ];

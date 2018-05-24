@@ -25,31 +25,30 @@ export default {
     name() {
       return `preset${this.index}`;
     },
-    activePresetCond(){
-      if(Object.keys(this.unit)[0] === this.$store.state.activePreset){
-      return true;
+    activePresetCond() {
+      if (Object.keys(this.unit)[0] === this.$store.state.activePreset) {
+        return true;
       } else {
         return false;
       }
     },
-    mapName(){
+    mapName() {
       //change camelCase name to Sentence Case name
       const text = Object.keys(this.unit)[0];
-      const splitText = text.replace( /([A-Z])/g, " $1" );
+      const splitText = text.replace(/([A-Z])/g, " $1");
       const result = splitText.charAt(0).toUpperCase() + splitText.slice(1);
       return result;
     },
     centerChange() {
       return this.$store.state.coordinates.lat;
     },
-    zoomChange(){
-        return this.$store.state.zoom;
+    zoomChange() {
+      return this.$store.state.zoom;
     }
   },
   watch: {
     centerChange: {
       handler() {
-
         this.savedMapInstance.setCenter({
           lat: this.$store.state.coordinates.lat,
           lng: this.$store.state.coordinates.lng
@@ -57,8 +56,8 @@ export default {
       },
       deep: true
     },
-    zoomChange(){
-        this.savedMapInstance.setZoom(this.zoomChange);
+    zoomChange() {
+      this.savedMapInstance.setZoom(this.zoomChange);
     }
   },
   methods: {
@@ -87,12 +86,15 @@ export default {
       });
     },
     changeStyle() {
-      // make copy of array in order to 
+      // make copy of array in order to
       //delete only copy of styles in styles section
       //dispatch action
-      this.$store.dispatch("changeStyle", this.unit[Object.keys(this.unit)[0]].slice());
+      this.$store.dispatch(
+        "changeStyle",
+        this.unit[Object.keys(this.unit)[0]].slice()
+      );
 
-      //set active preset 
+      //set active preset
       this.$store.dispatch("setActivePreset", Object.keys(this.unit)[0]);
     }
   },
@@ -104,52 +106,70 @@ export default {
 
 <style lang="scss">
 @import "../../../SASS/variables";
-.preset-map-container{
+.preset-map-container {
   margin: 0 20px 20px 20px;
-  transition: .2s;
+  transition: 0.2s;
   position: relative;
 
-  &:hover{
+  &:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba($color-black, 0.3);
 
-    .map-name{
+    .map-name {
       height: 30px;
     }
   }
 }
 
-.activePreset{
+.activePreset {
   transform: scale(1.08);
   box-shadow: 0 5px 15px rgba($color-black, 0.3);
-  &:hover{
+  &:hover {
     transform: scale(1.08);
   }
-  .map-name{
-      height: 30px;
-      background: $color-green;
-    }
+  .map-name {
+    height: 30px;
+    background: $color-green;
+  }
 }
 
 .preset-map {
   width: 100%;
   height: 150px;
   cursor: pointer;
-    
 }
 
-.map-name{
+.map-name {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   color: $color-white;
   background: $color-blue;
-  transition: .2s;
-  display:flex;
+  transition: 0.2s;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 0px;
   overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .preset-map-container {
+    .map-name {
+      height: 30px;
+    }
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+  .activePreset {
+    &:hover {
+      transform: scale(1.08);
+      box-shadow: 0 5px 15px rgba($color-black, 0.3);
+    }
+  }
 }
 </style>

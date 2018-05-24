@@ -30,7 +30,7 @@
       </div>
       
       <transition name="menu" mode="out-in">
-        <keep-alive>
+        <keep-alive exclude="appPresets">
           <component :is="show"></component>
         </keep-alive>
       </transition> 

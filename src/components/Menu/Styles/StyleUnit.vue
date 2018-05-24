@@ -139,6 +139,7 @@ export default {
           "hue"
         ];
         for (let y = 0; y < order.length; y++) {
+          
           for (let i = 0; i < unitStyle.stylers.length; i++) {
             if (unitStyle.stylers[i].hasOwnProperty(order[y])) {
               newStylersOrder[y] = unitStyle.stylers[i];

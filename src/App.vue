@@ -49,9 +49,8 @@ body {
 @media(max-width: 800px){
   .myApp{
     height: auto;
-  grid-template-columns: auto;
-  grid-auto-rows: 250px auto;
-
+    grid-template-columns: auto;
+    grid-auto-rows: 40vh 60vh;
   }
 
   .app-map{
