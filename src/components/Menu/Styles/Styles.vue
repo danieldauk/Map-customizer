@@ -41,7 +41,7 @@ export default {
 @media (max-width: 800px) {
   .styles {
     max-height: none;
-    height: 60vh;
+    height: calc(60vh - 50px);
   }
 }
 </style>

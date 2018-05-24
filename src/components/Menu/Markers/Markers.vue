@@ -42,7 +42,7 @@ export default {
 @media (max-width: 800px) {
   .markers {
     max-height: none;
-    height: 60vh;
+    height: calc(60vh - 50px);
   }
 }
 </style>
