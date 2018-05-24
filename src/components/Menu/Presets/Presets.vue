@@ -36,8 +36,8 @@ export default {
 
 @media (max-width: 800px) {
   .presets {
-    max-height: auto;
-    height: 100%;
+    max-height: none;
+    height: 60vh;
   }
 }
 </style>

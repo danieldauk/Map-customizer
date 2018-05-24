@@ -40,7 +40,8 @@ export default {
 
 @media (max-width: 800px) {
   .styles {
-    max-height: 100%;
+    max-height: none;
+    height: 60vh;
   }
 }
 </style>

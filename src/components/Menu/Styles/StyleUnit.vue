@@ -139,7 +139,6 @@ export default {
           "hue"
         ];
         for (let y = 0; y < order.length; y++) {
-          
           for (let i = 0; i < unitStyle.stylers.length; i++) {
             if (unitStyle.stylers[i].hasOwnProperty(order[y])) {
               newStylersOrder[y] = unitStyle.stylers[i];
@@ -167,19 +166,19 @@ export default {
         style: this.style
       });
 
-      //remove activePresetName 
+      //remove activePresetName
       this.$store.dispatch("setActivePreset", "");
     },
     removeStyle() {
       this.$store.dispatch("removeStyle", this.index);
 
-      //remove activePresetName 
+      //remove activePresetName
       this.$store.dispatch("setActivePreset", "");
     },
-    removeAllStyles(){
+    removeAllStyles() {
       this.$store.dispatch("removeAllStyles");
 
-      //remove activePresetName 
+      //remove activePresetName
       this.$store.dispatch("setActivePreset", "");
     }
   }
@@ -313,7 +312,6 @@ input[type="color"] {
 
     &:hover {
       background: $color-red;
-
     }
   }
 
@@ -341,5 +339,44 @@ input[type="color"] {
   padding: 8px 15px;
   margin: 5px 0px;
   font-size: 15px;
+}
+
+@media (max-width: 800px) {
+  .custom-style-buttons {
+    display: flex;
+    justify-content: center;
+
+    div {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 85px;
+      height: 18px;
+      &:hover .clear-all {
+        width: 60px;
+        right: 25px;
+      }
+      button {
+        &:last-child {
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          height: 18px;
+          width: 18px;
+          color: $color-white;
+          font-size: 25px;
+          background: $color-red;
+          border-radius: 2px;
+          line-height: 1;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 2;
+        }
+      }
+    }
+  }
 }
 </style>
