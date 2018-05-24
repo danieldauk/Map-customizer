@@ -235,8 +235,8 @@ export default {
       }
       button {
         &:last-child {
-          font-size: 18px;
-          line-height: 1;
+          font-size: 16px;
+          line-height: 18px;
         }
       }
     }
