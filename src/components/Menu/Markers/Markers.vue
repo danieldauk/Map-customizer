@@ -38,4 +38,10 @@ export default {
 .markers-container{
   padding: 0 10px;
 }
+
+@media (max-width: 800px) {
+  .markers {
+    max-height: auto;
+  }
+}
 </style>

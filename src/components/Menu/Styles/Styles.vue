@@ -28,16 +28,19 @@ export default {
 
 
 <style lang="scss">
-
-.styles{
+.styles {
   max-height: 100vh;
-  overflow:auto;
+  overflow: auto;
 }
 
-.styles-column-reverse{
-  display:flex;
+.styles-column-reverse {
+  display: flex;
   flex-direction: column-reverse;
 }
 
-
+@media (max-width: 800px) {
+  .styles {
+    max-height: auto;
+  }
+}
 </style>

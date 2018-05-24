@@ -33,4 +33,10 @@ export default {
   max-height: 100vh;
   overflow:auto;
 }
+
+@media (max-width: 800px) {
+  .presets {
+    max-height: auto;
+  }
+}
 </style>
