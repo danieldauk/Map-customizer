@@ -118,8 +118,8 @@ export default {
    color: $color-grey-dark;
    width: 95%;
    border: none;
-   background:none;
-   box-shadow: none;
+   -webkit-appearance: none;
+   border-radius: 0;
    border-bottom: 1px solid rgba($color-grey-medium, 0.5);
   }
  
