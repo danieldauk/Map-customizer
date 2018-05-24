@@ -218,6 +218,7 @@ export default {
 }
 
 @media(max-width: 800px){
+ 
   .custom-style-buttons {
 
     div {

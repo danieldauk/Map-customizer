@@ -215,7 +215,7 @@ select {
   width: 100%;
   border-bottom: 1px solid rgba($color-grey-medium, 0.5);
   -webkit-appearance: none;
-   border-radius: 0;
+  border-radius: 0;
 }
 
 .style-select {
@@ -344,17 +344,18 @@ input[type="color"] {
 }
 
 @media (max-width: 800px) {
-  input[type="color"], input[type="number"], select {
-  width: 90%;
+  input[type="color"],
+  input[type="number"],
+  select {
+    width: 90%;
   }
 
-  input[type="color"]{
-  border-bottom: 1px solid $color-grey-medium;
-  height: 18px;
+  input[type="color"] {
+    border-bottom: 1px solid $color-grey-medium;
+    height: 18px;
   }
 
   .custom-style-buttons {
-
     div {
       position: absolute;
       top: 5px;
@@ -370,9 +371,15 @@ input[type="color"] {
       button {
         &:last-child {
           font-size: 16px;
-          line-height: 1;
+          line-height: 1.125;
         }
       }
+    }
+  }
+
+  .custom-unit {
+    &:not(:last-child) {
+      padding-top: 35px;
     }
   }
 }

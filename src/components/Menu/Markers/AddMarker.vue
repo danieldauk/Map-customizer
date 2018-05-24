@@ -127,4 +127,15 @@ export default {
   
   
 }
+
+@media(max-width: 800px){
+  .markersUnit{
+   
+   &:not(:first-child){
+     padding-top: 35px;
+   }
+
+   
+}
+}
 </style>
